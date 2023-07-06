@@ -30,7 +30,7 @@ namespace GerenciamentoProjetos
             projectList = new List<Project>();
         } 
 
-        public void AddProject(Project project)
+        public void AddProjects(Project project)
         {
             projectList.Add(project);
             Console.WriteLine("Projeto adicionado com sucesso!");
@@ -47,6 +47,11 @@ namespace GerenciamentoProjetos
         }
 
         public void AttProjects()
+        {
+
+        }
+
+        public void RemoveProjects()
         {
 
         }
@@ -76,7 +81,44 @@ namespace GerenciamentoProjetos
 
                 switch (opcao)
                 {
-                    
+                    case 1:
+                        Console.Write("Adicione título: ");
+                        string title = Console.ReadLine();
+
+                        Console.Write("Adicione uma descrição: ");
+                        string description = Console.ReadLine();
+
+                        Console.WriteLine("Data de início: ");
+                        int idate = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Data de término: ");
+                        int tdate = int.Parse(Console.ReadLine());
+
+                        Project newProject = new Project
+                        {
+                            Title = title,
+                            Description = description,
+                            IDate = idate,
+                            TDate = tdate,
+                        };
+
+                        management.AddProjects(newProject);
+
+                        Console.WriteLine("Projeto adicionado com sucesso!");
+
+                        break;
+
+                    case 2:
+                        management.ShowProjects();
+                        break;
+
+                    case 3:
+                        
+
+                    case 0:
+                        Console.WriteLine("Saindo do programa...");
+                        break;
+
                     default:
                         Console.WriteLine("Erro indefinido, tente novamente!");
                         break;
