@@ -46,6 +46,40 @@ namespace GerenciamentoProjetos
             }
         }
 
+        public void UpdateProject(string title)
+        {
+            Project projectToUpdate = projectList.Find(p => p.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+
+            if (projectToUpdate != null)
+            {
+                Console.WriteLine($"Atualizando projeto: {title}");
+
+                Console.Write("Novo título: ");
+                string newTitle = Console.ReadLine();
+
+                Console.Write("Nova descrição: ");
+                string newDescription = Console.ReadLine();
+
+                Console.Write("Nova data de início: ");
+                int newIDate = int.Parse(Console.ReadLine());
+
+                Console.Write("Nova data de término: ");
+                int newTDate = int.Parse(Console.ReadLine());
+
+                projectToUpdate.Title = newTitle;
+                projectToUpdate.Description = newDescription;
+                projectToUpdate.IDate = newIDate;
+                projectToUpdate.TDate = newTDate;
+
+                Console.WriteLine("Projeto atualizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Projeto não existente!");
+            }
+        }
+
+
         public void RemoveProjects(string title)
         {
             Project deleteProject = projectList.Find(p => p.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
@@ -142,6 +176,11 @@ namespace GerenciamentoProjetos
                         break;
 
                     case 3:
+                        Console.WriteLine("Projeto a ser atualizado (Título): ");
+                        string updateTitle = Console.ReadLine();
+
+                        management.UpdateProject(updateTitle);
+                        break;
 
                     case 4:
                         Console.WriteLine("Projeto a ser removido (Título): ");
@@ -169,5 +208,4 @@ namespace GerenciamentoProjetos
             } while (opcao != 0);
         }
     }
-
 }
