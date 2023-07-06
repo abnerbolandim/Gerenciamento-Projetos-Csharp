@@ -51,8 +51,20 @@ namespace GerenciamentoProjetos
 
         }
 
-        public void RemoveProjects()
+        public void RemoveProjects(string title)
         {
+            Project deleteProject = projectList.Find(p => p.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+
+            if(deleteProject != null)
+            {
+                projectList.Remove(deleteProject);
+
+                Console.WriteLine("Projeto removido com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Projeto não existente!");
+            }
 
         }
     }
@@ -113,7 +125,16 @@ namespace GerenciamentoProjetos
                         break;
 
                     case 3:
+
+                    case 4:
+                        Console.WriteLine("Projeto a ser removido (Titulo): ");
+                        string deleteTitle = Console.ReadLine();
                         
+                        management.RemoveProjects(deleteTitle);
+                        break;
+
+                    case 5:
+                        break;
 
                     case 0:
                         Console.WriteLine("Saindo do programa...");
