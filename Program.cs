@@ -45,6 +45,45 @@ namespace GerenciamentoProjetos
                 project.ShowDetails();
             }
         }
+
+        public void AttProjects()
+        {
+
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("-=-=-=- Bem-vindo ao Gerenciamento de Projetos -=-=-=-");
+
+            Management management = new Management();
+
+            int opcao;
+
+            do
+            {
+                Console.WriteLine("1. Adicionar um Projeto");
+                Console.WriteLine("2. Visualizar todos os Projetos");
+                Console.WriteLine("3. Atualizar um Projeto");
+                Console.WriteLine("4. Remover um Projeto");
+                Console.WriteLine("5. Pesquisar Projeto por título");
+                Console.WriteLine("0. Sair");
+
+                Console.Write("\nDigite: ");
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    
+                    default:
+                        Console.WriteLine("Erro indefinido, tente novamente!");
+                        break;
+                }
+
+            } while (opcao != 0);
+        }
     }
 
 }
