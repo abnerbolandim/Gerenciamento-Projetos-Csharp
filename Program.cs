@@ -46,11 +46,6 @@ namespace GerenciamentoProjetos
             }
         }
 
-        public void AttProjects()
-        {
-
-        }
-
         public void RemoveProjects(string title)
         {
             Project deleteProject = projectList.Find(p => p.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
@@ -65,6 +60,28 @@ namespace GerenciamentoProjetos
             {
                 Console.WriteLine("Projeto não existente!");
             }
+        }
+
+        public void SearchProjects(string title)
+        {
+            Console.WriteLine($"Pesquisa de projeto: {title}");
+
+            Project searchProject = projectList.Find(p => p.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+        
+            if(searchProject != null)
+            {
+                Console.WriteLine($"Título: {searchProject.Title}");
+                Console.WriteLine($"Descrição: {searchProject.Description}");
+                Console.WriteLine($"Data de início: {searchProject.IDate}");
+                Console.WriteLine($"Data de término: {searchProject.TDate}");
+                Console.WriteLine($"Status: {searchProject.Status}");   
+            }
+            else
+            {
+                Console.WriteLine("Projeto não encontrado.");
+            }
+
+            Console.ReadKey();
 
         }
     }
@@ -127,13 +144,17 @@ namespace GerenciamentoProjetos
                     case 3:
 
                     case 4:
-                        Console.WriteLine("Projeto a ser removido (Titulo): ");
+                        Console.WriteLine("Projeto a ser removido (Título): ");
                         string deleteTitle = Console.ReadLine();
                         
                         management.RemoveProjects(deleteTitle);
                         break;
 
                     case 5:
+                        Console.WriteLine("Projeto a ser pesquisado (Título): ");
+                        string searchTitle = Console.ReadLine();
+
+                        management.SearchProjects(searchTitle);
                         break;
 
                     case 0:
